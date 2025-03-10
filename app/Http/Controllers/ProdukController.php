@@ -87,30 +87,7 @@ class ProdukController extends Controller
 }
 
 //8
-public function no_8($id)
-{
-    // Ambil data produk dari session
-    $produkList = session('produk', $this->produk);
 
-    // Cari index produk berdasarkan ID
-    $index = array_search($id, array_column($produkList, 'id'));
-
-    // Jika produk ditemukan, hapus dari array
-    if ($index !== false) {
-        $produkTerhapus = $produkList[$index];
-        array_splice($produkList, $index, 1);
-
-        // Simpan kembali ke session
-        session(['produk' => $produkList]);
-
-        return response()->json([
-            'message' => 'Produk berhasil dihapus!',
-            'produk' => $produkTerhapus
-        ], 200);
-    }
-
-    return response()->json(['message' => 'Produk tidak ditemukan!'], 404);
-}
 
 
 
